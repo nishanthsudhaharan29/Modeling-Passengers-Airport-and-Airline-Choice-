@@ -1,79 +1,80 @@
-# ✈️ Modeling Passengers’ Airport and Airline Choice Behavior
+# Modeling Passengers’ Airport and Airline Choice Behavior
 
-## 📘 Project Description
+## Project Description
 
-This project presents an in-depth analysis and predictive modeling of passengers’ airport and airline choices within the Seoul Metropolitan Area, focusing on Gimpo (GMP) and Incheon (ICN) airports. The primary goal is to uncover key factors influencing traveler decisions and develop models that accurately predict their preferences.
+This project presents an in-depth analysis and predictive modeling of passengers’ airport and airline choices within the Seoul Metropolitan Area, with a focus on the two major airports: Gimpo (GMP) and Incheon (ICN). The primary objective is to identify key factors influencing traveler decisions and develop models that accurately predict their preferences.
 
-The study leverages a survey dataset of 488 respondents, enriched with both socio-demographic and alternative-specific attributes. Using exploratory data analysis (EDA), correlation mapping, and thoughtful data preprocessing, we prepare a clean dataset suitable for model development.
+The study is based on a structured survey dataset of 488 respondents, capturing both socio-demographic and alternative-specific attributes. Through exploratory data analysis (EDA), correlation assessments, and targeted data preprocessing, the dataset is prepared for effective model development.
 
-Ultimately, this project aims to support stakeholders—such as airlines, airports, and policy-makers—by offering insights that can guide more efficient service delivery, targeted marketing, and infrastructure planning.
+The findings aim to support stakeholders—such as airlines, airport authorities, and transportation policymakers—by offering insights to enhance service efficiency, tailor marketing strategies, and inform infrastructure planning.
 
 ---
 
-## 📊 Dataset Summary
+## Dataset Summary
 
 - **Total Records:** 488
 - **Variables:** 27
-- **Key Targets:**
+- **Target Variables:**
   - `Airport Choice` (ICN or GMP)
   - `Airline Choice` (Korean Air, Asiana Air, Korean LCC, Foreign Carriers)
 
-### 🔍 Key Features
+### Key Features
 
-- **Demographics:** Age, Gender, Nationality, Income Class, Occupation  
-- **Trip Details:** Purpose, Duration, Companions, Flight Time, Destination  
-- **Travel Logistics:** Access Time, Access Cost, Mode of Transport, No. of Transport Modes  
-- **Flight Details:** Airline, Seat Class, Airfare, Mileage, Frequent Flight Destination  
-
----
-
-## 📈 Exploratory Data Analysis (EDA)
-
-- **Correlation Highlights:**
-  - Positive correlation among `ModeTransport`, `AccessCost`, `AccessTime`, and `Mileage`.
-  - `Airfare` is moderately correlated with `SeatClass`, validating fare-tier alignment.
-  - Sparse correlation for identifiers (e.g., `Respondent ID`, `Airport`, `Airline`) suggesting independence.
-
-- **Visual Insights:**
-  - Heatmaps and distribution plots revealed patterns in departure times and access methods.
-  - Airline preference appears linked to demographic segments and trip purpose.
+- **Demographics:** Age, Gender, Nationality, Occupation, Income Class  
+- **Trip Details:** Purpose of trip, Trip duration, Number of flying companions, Destination  
+- **Travel Logistics:** Mode of transport to airport, Number of transport modes used, Access time, Access cost  
+- **Flight Details:** Airline, Seat class, Airfare, Departure hour and minute, Mileage, Frequent flyer program
 
 ---
 
-## 🧹 Data Cleaning & Preprocessing
+## Exploratory Data Analysis (EDA)
 
-### ❗ Missing Value Analysis
+### Correlation Analysis
 
-| Variable         | Missing Count |
-|------------------|----------------|
-| Mileage          | ~400           |
-| Mileage/Airline  | High           |
-| AccessCost       | Moderate       |
-| Airfare, FlightNo| ~50% missing   |
+- Positive correlations observed among `ModeTransport`, `AccessCost`, `AccessTime`, and `Mileage`, reflecting expected travel dynamics.
+- Moderate positive correlation between `Airfare` and `SeatClass`, confirming typical fare-tier patterns.
+- Minimal correlation between identifier-like variables (`ID`, `Airport`, `Airline`) and other features, indicating independence.
 
-### ✅ Imputation Strategies
+### Visual Insights
 
-- **Dropped:** Variables with excessive nulls or non-contributive information
-- **Kept & Imputed:**
-  - **Access Time**: Group mean imputation by `ProvinceResidence`, `ModeTransport`, and `NoTransport`  
-    - Reduced missing from 97 → 15
-  - **Departure Hour**: Imputed using mode by `Destination` and `DepartureTime`
-
-These imputation strategies maintained model interpretability and data integrity.
+- Distribution plots and heatmaps were used to reveal patterns in departure timing, airline choice by demographic segment, and access methods.
+- Demographic and trip-specific variables appear to influence both airport and airline choices.
 
 ---
 
-## 🚀 Objectives & Outcomes
+## Data Cleaning and Preprocessing
 
-- Understand drivers behind airport and airline choices
-- Create predictive models for transportation policy and marketing decisions
-- Provide data-driven support to improve passenger experience
+### Missing Value Analysis
+
+| Variable           | Approx. Missing Count |
+|--------------------|------------------------|
+| Mileage            | ~400                   |
+| Mileage/Airline    | High                   |
+| AccessCost         | Moderate               |
+| Airfare, FlightNo  | ~50% missing           |
+
+### Imputation and Treatment
+
+- **Dropped Variables:** High-null columns with limited modeling utility.
+- **Retained and Treated Variables:**
+  - **Access Time:** Imputed using group mean based on `ProvinceResidence`, `ModeTransport`, and `NoTransport`, reducing missing values from 97 to 15.
+  - **Departure Hour:** Imputed using the mode based on `Destination` and `DepartureTime`, ensuring consistency with temporal travel trends.
+
+These preprocessing steps preserved data integrity while enhancing feature usability for modeling.
 
 ---
 
-## 📎 Tools & Technologies
+## Project Objectives and Outcomes
 
-- Python (pandas, numpy, seaborn, matplotlib)
+- Identify key factors driving passengers’ choice of airport and airline.
+- Build predictive models to support transportation planning and strategic marketing.
+- Generate actionable insights to enhance the passenger experience and optimize service design.
+
+---
+
+## Tools and Technologies
+
+- Python (pandas, numpy, matplotlib, seaborn)
 - Jupyter Notebooks
 - Scikit-learn
-- Survey & behavioral data modeling
+- Behavioral modeling and survey data analysis techniques
