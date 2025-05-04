@@ -1,4 +1,4 @@
-# Modeling Passengers’ Airport and Airline Choice Behavior
+# Modeling Passengers’ Airport and Airline Choice Behavior using ML
 
 ## Project Description
 
